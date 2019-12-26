@@ -42,7 +42,7 @@ router.get('/shotLocation', async function(req, res, next) {
     let { title } = req.query;
     title = decodeURI(title);
     const {rows} = await db.query(`select *,
-        (select json_agg(locations) as locations from movie_location)
+        (select json_agg(locations) as locations from movie_location where title=$1)
         from movie where title=$1`, [title]);
     res.send(rows);
 })
