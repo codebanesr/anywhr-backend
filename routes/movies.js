@@ -11,8 +11,9 @@ const db = require('../db')
 router.get('/', async function(req, res, next) {
     let { page=1, perPage=20 } = req.query;
     const offset = (page-1)*perPage;
-    const {rows} = await db.query('select id, title, locations from movie order by title asc limit $1 offset $2', [perPage, offset]);
-    res.send(rows);
+    const {rows} = await db.query('select * from movie order by title asc limit $1 offset $2', [perPage, offset]);
+    const {rows: [{total}]} = await db.query('select count(*) as total from movie');
+    res.send({data: rows, total});
 })
 
 
@@ -26,10 +27,9 @@ router.get('/suggest', async function(req, res, next) {
     let { title, page=1, perPage=20 } = req.query;
     const offset = (page-1)*perPage;
     const {rows} = await db.query('select * from movie where lower(title) like $1 limit $2 offset $3', [`%${title}%`, perPage, offset]);
-    res.send(rows);
+    const {rows: [{total}]} = await db.query('select count(*) as total from movie where lower(title) like $1', [`%${title}%`]);
+    res.send({data: rows, total});
 })
-
-
 
 /**
  * Sends back all locations where a particular movie was shot, once we have populated movies we
@@ -41,7 +41,9 @@ router.get('/suggest', async function(req, res, next) {
 router.get('/shotLocation', async function(req, res, next) {
     let { title } = req.query;
     title = decodeURI(title);
-    const {rows} = await db.query('select id, locations from movie where title=$1', [title]);
+    const {rows} = await db.query(`select *,
+        (select json_agg(locations) as locations from movie_location)
+        from movie where title=$1`, [title]);
     res.send(rows);
 })
 
@@ -52,7 +54,7 @@ router.get('/shotLocation', async function(req, res, next) {
  */
 router.get('/:id', async function(req, res, next) {
     let { id } = req.params;
-    const {rows} = await db.query('select id, locations from movie where id=$1', [id]);
+    const {rows} = await db.query('select title from movie where id=$1', [id]);
     res.send(rows);
 })
 
