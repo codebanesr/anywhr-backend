@@ -22,11 +22,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/ui', express.static(path.join(__dirname, 'public')));
+app.use('/api/v1/', indexRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/movies', moviesRouter);
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/movies', moviesRouter);
+
+app.use('*', (req, res, next)=>{
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
