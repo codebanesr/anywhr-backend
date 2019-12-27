@@ -13,6 +13,6 @@ module.exports = (app) => {
   
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render("Its not you! Its me! Give me a call at 7005902831");
   });
 }

@@ -44,7 +44,7 @@ router.get('/shotLocation', async function(req, res, next) {
     const {rows} = await db.query(`select *,
         (select json_agg(locations) as locations from movie_location where title=$1)
         from movie where title=$1`, [title]);
-    res.send(rows);
+    res.send(rows[0]);
 })
 
 
