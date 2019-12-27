@@ -1,50 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+
+const express = require('express');
+const path = require('path');
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var moviesRouter = require('./routes/movies');
 
-
-var app = express();
+const app = express();
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+require('./starter/initViews')(app);
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// body parser and request parsers
+require('./starter/initDecorators')(app);
+
+// static file initializers
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Route initializing middleware functions
+require('./starter/initRoutes')(app);
 
-app.use('/api/v1/', indexRouter);
-app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/movies', moviesRouter);
-
-
+// static file handling
 app.use('*', (req, res, next)=>{
   res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// Exception handlers go here
+require('./starter/errorHandlers')(app)
 
 module.exports = app;
