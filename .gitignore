@@ -1,7 +1,6 @@
 .env
 .env.default
 node_modules/*
-bin/*
 
 
 # Logs
