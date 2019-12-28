@@ -4,6 +4,7 @@ const {
     getAllMovies, getSuggestedMovies,getMovieShootingLocation,getMovieById
 } = require('../service/moviesService');
 
+
 /** 
  * GET /movies
  * get all movies
@@ -53,7 +54,7 @@ router.get('/shotLocation', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     let { id } = req.params;
     const result = await getMovieById(id);
-    res.send(rows);
+    res.send(result);
 })
 
 
