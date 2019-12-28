@@ -41,3 +41,34 @@ Add logger for cloudwatch logging
  ` Add another route called user, where the user can save his favourite movie shot locations, and can revisit it. Kind of like a cart to store shopping items. ` 
  ` Allow him to rate these locations from 1 to 5 `
 ```
+
+#### Database tables
+```
+create table movie
+(
+	title varchar(256) not null
+		constraint movie_pkey
+			primary key,
+	release_year varchar(128),
+	fun_facts varchar(339),
+	production_company varchar(256) default 'N/A'::character varying,
+	distributor varchar(256),
+	director varchar(79),
+	writer varchar(49),
+	actor_1 varchar,
+	actor_2 varchar,
+	actor_3 varchar
+);
+```
+
+
+```
+create table movie_location
+(
+	title varchar(45) not null,
+	locations varchar(110)
+);
+
+```
+
+
