@@ -4,6 +4,7 @@ const {
     getAllMovies, getSuggestedMovies,getMovieShootingLocation,getMovieById
 } = require('../service/moviesService');
 
+const responseValidator = require('../validators/responseValidator');
 
 /** 
  * GET /movies
@@ -15,7 +16,7 @@ router.get('/', async function(req, res, next) {
     let { page=1, perPage=20 } = req.query;
     const offset = (page-1)*perPage;
     const result = await getAllMovies(perPage, offset);
-    res.send(result);
+    res.send(responseValidator(require('../schema/getAllMoviesSchema'), result));
 })
 
 
@@ -30,7 +31,7 @@ router.get('/suggest', async function(req, res, next) {
     title=title.toLocaleLowerCase();
     const offset = (page-1)*perPage;
     const result = await getSuggestedMovies(title, perPage, offset)
-    res.send(result);
+    res.send(responseValidator(require('../schema/getAllMoviesSchema'), result));
 })
 
 /**
@@ -43,7 +44,7 @@ router.get('/suggest', async function(req, res, next) {
 router.get('/shotLocation', async function(req, res, next) {
     let { title } = req.query;
     const result = await getMovieShootingLocation(title);
-    res.send(result);
+    res.send(responseValidator(require('../schema/movies'), result));
 })
 
 
@@ -54,7 +55,7 @@ router.get('/shotLocation', async function(req, res, next) {
 router.get('/:id', async function(req, res, next) {
     let { id } = req.params;
     const result = await getMovieById(id);
-    res.send(result);
+    res.send(responseValidator(require('../schema/movies'), result));
 })
 
 

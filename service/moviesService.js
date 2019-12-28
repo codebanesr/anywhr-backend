@@ -2,7 +2,8 @@ const db = require('../db')
 
 const getAllMovies = async(perPage, offset) => {
     const {rows} = await db.query('select * from movie order by title asc limit $1 offset $2', [perPage, offset]);
-    const {rows: [{total}]} = await db.query('select count(*) as total from movie');
+    let {rows: [{total}]} = await db.query('select count(*) as total from movie');
+    total = Number(total);
     return {data: rows, total}
 }
 
