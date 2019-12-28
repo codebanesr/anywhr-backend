@@ -6,9 +6,18 @@ Find your travel destinations, from famous movie spot
 ` app.js is the entry point of the application, however when running in production run bin/www`
 
 #### Features
-![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.37.47&#32;AM.png?raw=true "Title")
-![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.18&#32;AM.png "Title")
-![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.31&#32;AM.png?raw=true "Title")
+>Implemented real time search functionality using rxjs's debounce, distinct until changed operator
+>on angular form's input element, which exposes an event that is fired everytime value of input box 
+>changes
+>![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.37.47&#32;AM.png?raw=true "Real Time Search")
+
+> Movie Location and definition from wiki pages
+> On clicking any one of the locations, the app will look for that title on wikipedia and populate
+> results on the grey area
+>![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.18&#32;AM.png "Movie Location Scroller")
+
+>Pagination implementation in angular
+>![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.31&#32;AM.png?raw=true "Pagination")
 
 
 ### I have added some dummy data as well to check if pagination was properly working or not which shows wrong locations
