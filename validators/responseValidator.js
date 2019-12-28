@@ -1,6 +1,6 @@
 var Ajv = require('ajv');
 
-// bypass all 
+// bypass all
 module.exports = (schema, data) => {
     // const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
     // const validate = ajv.compile(schema);

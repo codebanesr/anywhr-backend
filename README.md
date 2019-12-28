@@ -2,6 +2,14 @@
 # anywhr-backend
 Find your travel destinations, from famous movie spot
 
+#### Entry point
+` app.js is the entry point of the application, however when running in production run bin/www`
+
+#### Features
+![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.37.47&#32;AM.png?raw=true "Title")
+![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.18&#32;AM.png "Title")
+![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.31&#32;AM.png?raw=true "Title")
+
 
 ### I have added some dummy data as well to check if pagination was properly working or not which shows wrong locations
 
@@ -31,21 +39,6 @@ $ pm2 delete   <app_name|namespace|id|'all'|json_conf>
 > https://node-postgres.com/api/pool
 
 
-
-Furthur improvements
-```
-Add a slack integration  for global exception
-Move service code to another file
-Add AJV schema for request and response validation or hapy joi
-To add a pagination service to all get requests that return a list
-In get movies route also add an order for movies, asc or desc
-Create a different service file, currently it doesnot make any sense to add it since all queries are single line
-Add logger for cloudwatch logging
-
- `Add a movie table`
- ` Add another route called user, where the user can save his favourite movie shot locations, and can revisit it. Kind of like a cart to store shopping items. ` 
- ` Allow him to rate these locations from 1 to 5 `
-```
 
 #### Database tables
 ```
