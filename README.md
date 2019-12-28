@@ -2,6 +2,11 @@
 # anywhr-backend
 Find your travel destinations, from famous movie spot
 
+
+### I have added some dummy data as well to check if pagination was properly working or not which shows wrong locations
+
+` Please have a look at this url this is the actual data that I got from the url provided in the assignment`
+` http://3.1.20.178:3000/movie?title=180 `
 ### Production build instructions
 update the .env file, your db credentials, put NODE_ENV=development to enable full logging
 
