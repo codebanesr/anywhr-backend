@@ -20,6 +20,7 @@ Find your travel destinations, from famous movie spot
 >![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.31&#32;AM.png?raw=true "Pagination")
 
 
+
 ### I have added some dummy data as well to check if pagination was properly working or not which shows wrong locations
 
 ` Please have a look at this url this is the actual data that I got from the url provided in the assignment`
