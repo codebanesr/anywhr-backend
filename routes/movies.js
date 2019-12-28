@@ -25,6 +25,7 @@ router.get('/', async function(req, res, next) {
  */
 router.get('/suggest', async function(req, res, next) {
     let { title, page=1, perPage=20 } = req.query;
+    title=title.toLocaleLowerCase();
     const offset = (page-1)*perPage;
     const {rows} = await db.query('select * from movie where lower(title) like $1 limit $2 offset $3', [`%${title}%`, perPage, offset]);
     const {rows: [{total}]} = await db.query('select count(*) as total from movie where lower(title) like $1', [`%${title}%`]);
