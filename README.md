@@ -2,6 +2,9 @@
 # anywhr-backend
 Find your travel destinations, from famous movie spot
 
+# Documentation Coverage for frontend 
+http://3.1.20.178:3000/documentation
+
 #### Entry point
 ` app.js is the entry point of the application, however when running in production run bin/www`
 
@@ -21,10 +24,44 @@ Find your travel destinations, from famous movie spot
 
 
 
-### I have added some dummy data as well to check if pagination was properly working or not which shows wrong locations
-
-` Please have a look at this url this is the actual data that I got from the url provided in the assignment`
+Example
 ` http://3.1.20.178:3000/movie?title=180 `
+
+### Running locally
+`git clone https://github.com/shanurrahman/anywhr-backend.git`
+`cd anywhr-backend`
+`npm install`
+`browse localhost:3000`
+
+### To improve upon the frontend
+`cd ..`
+`git clone https://github.com/shanurrahman/anywhr-frontend.git`
+`npm run compodoc`
+`ng build --prod`
+
+Now run your backend server
+`cd ../anywhr-backend && npm start`
+goto : localhost:3000
+
+Note:
+* For this process to run both anywhr-frontend and backend should be in the same folder
+
+### Using Docker
+From the root directory
+`docker build --tag="anywhr:anywhr" ./`
+docker image ls => find the id of your image and do a `docker run -d ${imageid}`
+
+>![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.18&#32;AM.png "Dockerdoc")
+
+>![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.05.49&#32;PM.png "Dockerdoc")
+
+>![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.04.58&#32;PM.png "Dockerdoc")
+
+>![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.05.49&#32;PM.png "Dockerdoc")
+
+
+
+
 ### Production build instructions
 update the .env file, your db credentials, put NODE_ENV=development to enable full logging
 
