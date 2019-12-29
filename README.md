@@ -49,14 +49,18 @@ Note:
 ### Using Docker
 From the root directory
 `docker build --tag="anywhr:anywhr" ./`
-docker image ls => find the id of your image and do a `docker run -d ${imageid}`
+docker image ls => find the id of your image and do a `docker run -d --restart=always -p 3000:3000 image_name:version`
+In our case it is going to be `docker run -d --restart=always -p 3000:3000 <image_id>`
+goto `localhost:3000`
 
->![Alt text](./git_images/Screenshot&#32;2019-12-29&#32;at&#32;2.38.18&#32;AM.png "Dockerdoc")
+* you can also use the image id if tag was not created
 
+> Building an image from dockerfile
+>![Alt text](./git_images/docker/starting&#32;a&#32;container.png "Dockerdoc")
+
+> Running docker container from that image
 >![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.05.49&#32;PM.png "Dockerdoc")
-
 >![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.04.58&#32;PM.png "Dockerdoc")
-
 >![Alt text](./git_images/docker/Screenshot&#32;2019-12-29&#32;at&#32;3.05.49&#32;PM.png "Dockerdoc")
 
 
@@ -64,6 +68,10 @@ docker image ls => find the id of your image and do a `docker run -d ${imageid}`
 
 ### Production build instructions
 update the .env file, your db credentials, put NODE_ENV=development to enable full logging
+* You may use this docker image inside a docker stack and use it with production but that will require
+* docker and docker compose installation first, for an app of this size I would not actually recommend 
+* going with that approach, Here I am using pm2 and pm2-logrotate for the same purpose
+  
 
 ##### npm install
 
